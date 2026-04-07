@@ -64,3 +64,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+gem "devise"
+gem "sqlite3", "~> 1.4"

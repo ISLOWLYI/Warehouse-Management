@@ -1,0 +1,16 @@
+<h2> Информация о складе</h2>
+
+<p>Добро пожаловать, <strong><%= current_user.email %></strong>!</p>
+
+<h3>Текущие остатки товаров:</h3>
+
+<ul>
+  <% @stock_items.each do |item| %>
+    <li>• <%= item %></li>
+  <% end %>
+</ul>
+
+<hr />
+<p>
+  <%= link_to " На главную", root_path %>
+</p>
