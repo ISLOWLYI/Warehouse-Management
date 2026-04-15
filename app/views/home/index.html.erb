@@ -1,0 +1,26 @@
+<h1> Управление складом</h1>
+
+<% if user_signed_in? %>
+  <div style="background: #e0f7fa; padding: 10px; margin: 10px 0; border-radius: 5px;">
+    <p> Вы вошли как <strong><%= current_user.email %></strong></p>
+  </div>
+  
+  <p>
+    <%= link_to " Информация о складе", warehouse_path %> |
+    <%= link_to " Выйти", logout_path %>
+  </p>
+<% else %>
+  <div style="background: #fff3e0; padding: 10px; margin: 10px 0; border-radius: 5px;">
+    <p> Вы не авторизованы</p>
+  </div>
+  
+  <p>
+    <%= link_to " Войти", new_user_session_path %> |
+    <%= link_to " Регистрация", new_user_registration_path %>
+  </p>
+<% end %>
+
+<hr />
+<p>
+  <%= link_to " На главную", root_path %>
+</p>
