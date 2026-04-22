@@ -1,0 +1,90 @@
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
+    <div>
+      <h1 class="text-3xl font-bold text-gray-900">Товары</h1>
+      <p class="text-gray-600 text-sm mt-1"><%= @warehouse.name %></p>
+    </div>
+    <div class="flex flex-wrap gap-2">
+      <%= link_to "+ Добавить товар", new_warehouse_product_path(@warehouse), class: "bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition" %>
+      <%= link_to "← Назад к складу", warehouse_path(@warehouse), class: "bg-gray-100 text-gray-700 px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-200 transition" %>
+    </div>
+  </div>
+
+  <!-- Filters -->
+  <div class="bg-white rounded-xl shadow-sm p-4 border border-gray-100 mb-6">
+    <%= form_with url: warehouse_products_path(@warehouse), method: :get, local: true, class: "flex flex-wrap gap-3 items-end" do |f| %>
+      <div>
+        <%= label_tag :category, "Категория", class: "block text-xs font-medium text-gray-500 mb-1" %>
+        <%= select_tag :category, options_for_select([["Все", ""]] + @warehouse.products.distinct.pluck(:category), params[:category]), class: "border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500" %>
+      </div>
+      <div>
+        <%= label_tag :status, "Статус", class: "block text-xs font-medium text-gray-500 mb-1" %>
+        <%= select_tag :status, options_for_select([["Все", ""], ["Активен", "active"], ["Неактивен", "inactive"], ["Архив", "archived"]], params[:status]), class: "border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500" %>
+      </div>
+      <div>
+        <%= label_tag :sort, "Сортировка", class: "block text-xs font-medium text-gray-500 mb-1" %>
+        <%= select_tag :sort, options_for_select([
+          ["Обновлено (новые)", ""],
+          ["Название А-Я", "name_asc"],
+          ["Название Я-А", "name_desc"],
+          ["Количество ↑", "quantity_asc"],
+          ["Количество ↓", "quantity_desc"],
+          ["Обновлено (старые)", "updated_at_asc"]
+        ], params[:sort]), class: "border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500" %>
+      </div>
+      <%= submit_tag "Применить", class: "bg-gray-800 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-900 transition" %>
+      <%= link_to "Сбросить", warehouse_products_path(@warehouse), class: "text-gray-500 hover:text-gray-700 text-sm px-2 py-2" %>
+    <% end %>
+  </div>
+
+  <!-- Products Table -->
+  <div class="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden">
+    <div class="overflow-x-auto">
+      <table class="min-w-full divide-y divide-gray-200">
+        <thead class="bg-gray-50">
+          <tr>
+            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Артикул</th>
+            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Название</th>
+            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Категория</th>
+            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Кол-во</th>
+            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Местоположение</th>
+            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Статус</th>
+            <th class="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Действия</th>
+          </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-100">
+          <% @products.each do |product| %>
+            <tr class="hover:bg-gray-50 transition">
+              <td class="px-4 py-3 text-sm font-medium text-gray-900"><%= product.sku %></td>
+              <td class="px-4 py-3 text-sm text-gray-700"><%= product.name %></td>
+              <td class="px-4 py-3 text-sm text-gray-600"><span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800"><%= product.category %></span></td>
+              <td class="px-4 py-3 text-sm text-gray-900 font-semibold"><%= product.quantity %></td>
+              <td class="px-4 py-3 text-sm text-gray-600">
+                <% if product.location.present? %>
+                  <%= link_to product.location, map_warehouse_path(@warehouse, zone: product.location.split('/')[0], rack: product.location.split('/')[1], spot: product.location.split('/')[2]), class: "text-blue-600 hover:underline" %>
+                <% else %>
+                  <span class="text-gray-400">—</span>
+                <% end %>
+              </td>
+              <td class="px-4 py-3">
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium <%= product.active? ? 'bg-green-100 text-green-800' : product.inactive? ? 'bg-gray-100 text-gray-800' : 'bg-red-100 text-red-800' %>">
+                  <%= t("product_statuses.#{product.status}", default: product.status) %>
+                </span>
+              </td>
+              <td class="px-4 py-3 text-right text-sm font-medium">
+                <%= link_to "Просмотр", warehouse_product_path(@warehouse, product), class: "text-blue-600 hover:text-blue-900 mr-3" %>
+                <%= link_to "Изменить", edit_warehouse_product_path(@warehouse, product), class: "text-indigo-600 hover:text-indigo-900 mr-3" %>
+                <%= link_to "Удалить", warehouse_product_path(@warehouse, product), data: { turbo_method: :delete, turbo_confirm: "Удалить товар #{product.name}?" }, class: "text-red-600 hover:text-red-900" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <% if @products.empty? %>
+      <div class="p-8 text-center text-gray-500">
+        Товары не найдены. <%= link_to "Добавить товар", new_warehouse_product_path(@warehouse), class: "text-blue-600 hover:underline" %>
+      </div>
+    <% end %>
+  </div>
+</div>

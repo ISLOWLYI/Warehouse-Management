@@ -1,0 +1,78 @@
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <div class="mb-8">
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900"><%= @warehouse.name %></h1>
+        <p class="text-gray-600 mt-1"><%= @warehouse.address.presence || "Адрес не указан" %></p>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <%= link_to "Товары", warehouse_products_path(@warehouse), class: "bg-blue-50 text-blue-700 px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-100 transition" %>
+        <%= link_to "Карта склада", map_warehouse_path(@warehouse), class: "bg-green-50 text-green-700 px-4 py-2 rounded-md text-sm font-medium hover:bg-green-100 transition" %>
+        <%= link_to "Участники", warehouse_warehouse_users_path(@warehouse), class: "bg-purple-50 text-purple-700 px-4 py-2 rounded-md text-sm font-medium hover:bg-purple-100 transition" %>
+        <%= link_to "Редактировать", edit_warehouse_path(@warehouse), class: "bg-gray-100 text-gray-700 px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-200 transition" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+    <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+      <h3 class="text-lg font-semibold text-gray-900 mb-4">Информация</h3>
+      <div class="space-y-3 text-sm">
+        <div class="flex justify-between"><span class="text-gray-500">Владелец</span> <span class="font-medium text-gray-900"><%= @warehouse.owner_name %></span></div>
+        <div class="flex justify-between"><span class="text-gray-500">Площадь</span> <span class="font-medium text-gray-900"><%= @warehouse.area ? "#{@warehouse.area} м²" : "—" %></span></div>
+        <div class="flex justify-between"><span class="text-gray-500">Стеллажи</span> <span class="font-medium text-gray-900"><%= @warehouse.racks_count %></span></div>
+        <div class="flex justify-between"><span class="text-gray-500">Зоны</span> <span class="font-medium text-gray-900"><%= @warehouse.zones_count %></span></div>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100 lg:col-span-2">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-lg font-semibold text-gray-900">Последние товары</h3>
+        <%= link_to "Все товары →", warehouse_products_path(@warehouse), class: "text-blue-600 text-sm hover:underline" %>
+      </div>
+      <% if @products.any? %>
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead>
+              <tr>
+                <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Артикул</th>
+                <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Название</th>
+                <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Категория</th>
+                <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Кол-во</th>
+                <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Статус</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+              <% @products.each do |product| %>
+                <tr class="hover:bg-gray-50">
+                  <td class="px-3 py-2 text-sm font-medium text-gray-900"><%= product.sku %></td>
+                  <td class="px-3 py-2 text-sm text-gray-700"><%= link_to product.name, warehouse_product_path(@warehouse, product), class: "text-blue-600 hover:underline" %></td>
+                  <td class="px-3 py-2 text-sm text-gray-600"><%= product.category %></td>
+                  <td class="px-3 py-2 text-sm text-gray-900 font-medium"><%= product.quantity %></td>
+                  <td class="px-3 py-2"><span class="inline-flex px-2 py-0.5 rounded-full text-xs font-medium <%= product.active? ? 'bg-green-100 text-green-800' : product.inactive? ? 'bg-gray-100 text-gray-800' : 'bg-red-100 text-red-800' %>"><%= product.status %></span></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      <% else %>
+        <p class="text-gray-500 text-sm">Пока нет товаров. <%= link_to "Добавить товар", new_warehouse_product_path(@warehouse), class: "text-blue-600 hover:underline" %></p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+    <h3 class="text-lg font-semibold text-gray-900 mb-4">Участники склада</h3>
+    <div class="flex flex-wrap gap-3">
+      <% @members.each do |wu| %>
+        <div class="flex items-center gap-2 bg-gray-50 rounded-full px-4 py-2">
+          <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-700 text-xs font-bold"><%= wu.user.name&.first || wu.user.email.first %></div>
+          <div>
+            <div class="text-sm font-medium text-gray-900"><%= wu.user.name || wu.user.email %></div>
+            <div class="text-xs text-gray-500"><%= t("roles.#{wu.role}", default: wu.role) %></div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

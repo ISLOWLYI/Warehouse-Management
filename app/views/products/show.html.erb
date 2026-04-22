@@ -1,0 +1,43 @@
+<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <div class="mb-6">
+    <%= link_to "← Назад к товарам", warehouse_products_path(@warehouse), class: "text-blue-600 hover:underline text-sm" %>
+  </div>
+
+  <div class="bg-white rounded-xl shadow-md p-6 sm:p-8 border border-gray-100">
+    <div class="flex justify-between items-start mb-6">
+      <h1 class="text-3xl font-bold text-gray-900"><%= @product.name %></h1>
+      <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium <%= @product.active? ? 'bg-green-100 text-green-800' : @product.inactive? ? 'bg-gray-100 text-gray-800' : 'bg-red-100 text-red-800' %>"><%= @product.status %></span>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+      <div class="bg-gray-50 rounded-lg p-4">
+        <div class="text-xs text-gray-500 uppercase tracking-wide mb-1">Артикул</div>
+        <div class="text-lg font-semibold text-gray-900"><%= @product.sku %></div>
+      </div>
+      <div class="bg-gray-50 rounded-lg p-4">
+        <div class="text-xs text-gray-500 uppercase tracking-wide mb-1">Категория</div>
+        <div class="text-lg font-semibold text-gray-900"><%= @product.category %></div>
+      </div>
+      <div class="bg-gray-50 rounded-lg p-4">
+        <div class="text-xs text-gray-500 uppercase tracking-wide mb-1">Количество</div>
+        <div class="text-lg font-semibold text-gray-900"><%= @product.quantity %> шт.</div>
+      </div>
+      <div class="bg-gray-50 rounded-lg p-4">
+        <div class="text-xs text-gray-500 uppercase tracking-wide mb-1">Местоположение</div>
+        <div class="text-lg font-semibold text-gray-900">
+          <% if @product.location.present? %>
+            <%= link_to @product.location, map_warehouse_path(@warehouse, zone: @product.location.split('/')[0], rack: @product.location.split('/')[1], spot: @product.location.split('/')[2]), class: "text-blue-600 hover:underline" %>
+          <% else %>
+            <span class="text-gray-400">Не указано</span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap gap-3">
+      <%= link_to "Редактировать", edit_warehouse_product_path(@warehouse, @product), class: "bg-blue-600 text-white px-6 py-2 rounded-md font-medium hover:bg-blue-700 transition" %>
+      <%= link_to "Карта склада", map_warehouse_path(@warehouse, zone: @product.location&.split('/')&.at(0), rack: @product.location&.split('/')&.at(1), spot: @product.location&.split('/')&.at(2)), class: "bg-green-600 text-white px-6 py-2 rounded-md font-medium hover:bg-green-700 transition" %>
+      <%= link_to "Удалить", warehouse_product_path(@warehouse, @product), data: { turbo_method: :delete, turbo_confirm: "Удалить товар?" }, class: "bg-red-600 text-white px-6 py-2 rounded-md font-medium hover:bg-red-700 transition" %>
+    </div>
+  </div>
+</div>

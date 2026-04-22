@@ -1,0 +1,9 @@
+ru:
+  roles:
+    admin: Администратор
+    worker: Работник
+    supplier: Поставщик
+  product_statuses:
+    active: Активен
+    inactive: Неактивен
+    archived: Архив
