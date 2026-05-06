@@ -43,7 +43,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def check_invitation_token
-    # Allow access to new action only with valid invitation token
     if action_name == "new" && params[:invitation_token].blank?
       @invitation_token = nil
     end
@@ -51,5 +50,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def after_sign_up_path_for(resource)
     warehouses_path
+  end
+
+  def after_update_path_for(resource)
+    edit_user_registration_path
   end
 end

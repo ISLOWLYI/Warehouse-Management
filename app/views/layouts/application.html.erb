@@ -25,7 +25,7 @@
           <%= link_to "Главная", root_path, class: "px-3 py-2 rounded-md text-sm font-medium #{current_page?(root_path) ? 'bg-blue-700 text-white' : 'text-blue-100 hover:bg-blue-600 hover:text-white'} transition" %>
           <%= link_to "О нас", about_path, class: "px-3 py-2 rounded-md text-sm font-medium #{current_page?(about_path) ? 'bg-blue-700 text-white' : 'text-blue-100 hover:bg-blue-600 hover:text-white'} transition" %>
           <% if user_signed_in? %>
-            <%= link_to "Склады", warehouses_path, class: "px-3 py-2 rounded-md text-sm font-medium #{request.path.start_with?('/warehouses') ? 'bg-blue-700 text-white' : 'text-blue-100 hover:bg-blue-600 hover:text-white'} transition" %>
+            <%= link_to "Склады", warehouses_path, class: "px-3 py-2 rounded-md text-sm font-medium #{request.path&.start_with?('/warehouses') ? 'bg-blue-700 text-white' : 'text-blue-100 hover:bg-blue-600 hover:text-white'} transition" %>
             <div class="flex items-center gap-3 ml-4 pl-4 border-l border-blue-500">
               <span class="text-sm text-blue-100"><%= current_user.name || current_user.email %></span>
               <%= link_to "Профиль", edit_user_registration_path, class: "text-sm text-blue-100 hover:text-white transition" %>
