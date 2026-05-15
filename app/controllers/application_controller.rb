@@ -16,7 +16,8 @@ class ApplicationController < ActionController::Base
   end
 
   def require_admin!
-    unless current_user&.admin?
+    is_admin = current_user&.admin? || current_user&.warehouse_users&.exists?(role: :admin, active: true)
+    unless is_admin
       flash[:alert] = "Доступ запрещен. Требуются права администратора."
       redirect_to(root_path)
     end

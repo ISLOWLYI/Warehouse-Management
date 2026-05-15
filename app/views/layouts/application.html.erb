@@ -29,7 +29,7 @@
             <div class="flex items-center gap-3 ml-4 pl-4 border-l border-blue-500">
               <span class="text-sm text-blue-100"><%= current_user.name || current_user.email %></span>
               <%= link_to "Профиль", edit_user_registration_path, class: "text-sm text-blue-100 hover:text-white transition" %>
-              <%= link_to "Выйти", logout_path, data: { turbo_method: :delete }, class: "text-sm bg-blue-700 hover:bg-blue-800 px-3 py-1.5 rounded-md transition" %>
+              <%= link_to "Выйти", logout_path, class: "text-sm bg-blue-700 hover:bg-blue-800 px-3 py-1.5 rounded-md transition" %>
             </div>
           <% else %>
             <%= link_to "Войти", new_user_session_path, class: "px-3 py-2 rounded-md text-sm font-medium text-blue-100 hover:bg-blue-600 hover:text-white transition" %>
@@ -53,7 +53,7 @@
         <% if user_signed_in? %>
           <%= link_to "Склады", warehouses_path, class: "block px-3 py-2 rounded-md text-base font-medium text-blue-100 hover:bg-blue-600 hover:text-white" %>
           <%= link_to "Профиль", edit_user_registration_path, class: "block px-3 py-2 rounded-md text-base font-medium text-blue-100 hover:bg-blue-600 hover:text-white" %>
-          <%= link_to "Выйти", logout_path, data: { turbo_method: :delete }, class: "block px-3 py-2 rounded-md text-base font-medium text-blue-100 hover:bg-blue-600 hover:text-white" %>
+          <%= link_to "Выйти", logout_path, class: "block px-3 py-2 rounded-md text-base font-medium text-blue-100 hover:bg-blue-600 hover:text-white" %>
         <% else %>
           <%= link_to "Войти", new_user_session_path, class: "block px-3 py-2 rounded-md text-base font-medium text-blue-100 hover:bg-blue-600 hover:text-white" %>
         <% end %>
