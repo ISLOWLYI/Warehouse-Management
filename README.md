@@ -39,6 +39,12 @@ docker compose exec web bin/rails console
 docker compose exec web bin/rails db:migrate
 ```
 
+Тесты:
+
+```bash
+docker compose exec -e RAILS_ENV=test web bundle exec rails test
+```
+
 Сброс БД:
 
 ```bash
