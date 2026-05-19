@@ -1,0 +1,17 @@
+one:
+  sku: "SKU-001"
+  warehouse: one
+  name: "Товар А"
+  category: "Электроника"
+  quantity: 10
+  location: "1/2/3"
+  status: 0
+
+two:
+  sku: "SKU-002"
+  warehouse: one
+  name: "Товар Б"
+  category: "Одежда"
+  quantity: 5
+  location: "2/1/4"
+  status: 1

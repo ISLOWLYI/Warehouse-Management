@@ -1,8 +1,11 @@
 require "test_helper"
 
 class WarehouseControllerTest < ActionDispatch::IntegrationTest
-  test "should get info" do
-    get warehouse_info_url
+  include Devise::Test::IntegrationHelpers
+
+  test "should redirect root when logged in" do
+    sign_in users(:one)
+    get root_url
     assert_response :success
   end
 end

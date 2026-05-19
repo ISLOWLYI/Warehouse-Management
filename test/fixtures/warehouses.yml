@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: "Главный склад"
+  owner_name: "Иван"
+  address: "Москва"
+  area: 500.0
+  racks_count: 8
+  zones_count: 4
+
+two:
+  name: "Второй склад"
+  owner_name: "Петр"
+  address: "Санкт-Петербург"
+  area: 200.0
+  racks_count: 4
+  zones_count: 2

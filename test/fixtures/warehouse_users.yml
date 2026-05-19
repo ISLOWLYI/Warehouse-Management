@@ -1,0 +1,11 @@
+one:
+  user: one
+  warehouse: one
+  role: 0
+  active: true
+
+two:
+  user: two
+  warehouse: one
+  role: 1
+  active: true
