@@ -462,3 +462,211 @@ Processing by WarehousesController#index as HTML
   Rendered layout layouts/application.html.erb (Duration: 5.7ms | GC: 0.0ms)
 Completed 200 OK in 9ms (Views: 5.3ms | ActiveRecord: 1.0ms (4 queries, 0 cached) | GC: 0.0ms)
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[35mSET search_path TO public[0m
+  [1m[35m (17.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "app_development"[0m
+  [1m[35m (59.3ms)[0m  [1m[35mCREATE DATABASE "app_development" ENCODING = 'unicode'[0m
+  [1m[35mSQL (10.2ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql" SCHEMA pg_catalog[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments" CASCADE[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "blob_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "name" character varying NOT NULL, "record_id" bigint NOT NULL, "record_type" character varying NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs" CASCADE[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "byte_size" bigint NOT NULL, "checksum" character varying, "content_type" character varying, "created_at" timestamp(6) NOT NULL, "filename" character varying NOT NULL, "key" character varying NOT NULL, "metadata" text, "service_name" character varying NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_variant_records" CASCADE[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" bigserial primary key, "blob_id" bigint NOT NULL, "variation_digest" character varying NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "products" CASCADE[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "products" ("sku" character varying NOT NULL PRIMARY KEY, "category" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "location" character varying, "name" character varying NOT NULL, "quantity" integer DEFAULT 0 NOT NULL, "status" integer DEFAULT 0 NOT NULL, "updated_at" timestamp(6) NOT NULL, "warehouse_id" bigint NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_products_on_warehouse_id" ON "products" ("warehouse_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "created_at" timestamp(6) NOT NULL, "email" character varying, "encrypted_password" character varying DEFAULT '' NOT NULL, "name" character varying, "remember_created_at" timestamp(6), "reset_password_sent_at" timestamp(6), "reset_password_token" character varying, "role" integer DEFAULT 1 NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "warehouse_users" CASCADE[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "warehouse_users" ("id" bigserial primary key, "active" boolean DEFAULT TRUE NOT NULL, "created_at" timestamp(6) NOT NULL, "invitation_token" character varying, "role" integer DEFAULT 1 NOT NULL, "updated_at" timestamp(6) NOT NULL, "user_id" bigint NOT NULL, "warehouse_id" bigint NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_warehouse_users_on_invitation_token" ON "warehouse_users" ("invitation_token")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_warehouse_users_on_user_id_and_warehouse_id" ON "warehouse_users" ("user_id", "warehouse_id")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE INDEX "index_warehouse_users_on_user_id" ON "warehouse_users" ("user_id")[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE INDEX "index_warehouse_users_on_warehouse_id" ON "warehouse_users" ("warehouse_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "warehouses" CASCADE[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "warehouses" ("id" bigserial primary key, "address" character varying, "area" decimal(10,2), "created_at" timestamp(6) NOT NULL, "name" character varying NOT NULL, "owner_name" character varying NOT NULL, "racks_count" integer DEFAULT 0 NOT NULL, "updated_at" timestamp(6) NOT NULL, "zones_count" integer DEFAULT 0 NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "active_storage_attachments" ADD CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "active_storage_variant_records" ADD CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "products" ADD CONSTRAINT "fk_rails_3eb2f07fab"
+FOREIGN KEY ("warehouse_id")
+  REFERENCES "warehouses" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "warehouse_users" ADD CONSTRAINT "fk_rails_322473ab37"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "warehouse_users" ADD CONSTRAINT "fk_rails_496130d1be"
+FOREIGN KEY ("warehouse_id")
+  REFERENCES "warehouses" ("id")
+[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20260519220100)[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20260417120734),
+(20260416105678),
+(20260416104567),
+(20260416103456),
+(20260416102345),
+(20260416101234),
+(20260407194229);[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'test', '2026-05-19 23:12:36.079587', '2026-05-19 23:12:36.079589') RETURNING "key"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('schema_sha1', '331ae27d89f6e87791bf4a1bced135630a18cd6c', '2026-05-19 23:12:36.080781', '2026-05-19 23:12:36.080782') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "active_storage_variant_records" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "warehouse_users" DISABLE TRIGGER ALL;ALTER TABLE "active_storage_blobs" DISABLE TRIGGER ALL;ALTER TABLE "active_storage_attachments" DISABLE TRIGGER ALL;ALTER TABLE "warehouses" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[36mFixtures Load (0.8ms)[0m  [1m[31mDELETE FROM "products";
+DELETE FROM "users";
+DELETE FROM "warehouse_users";
+DELETE FROM "warehouses";
+INSERT INTO "products" ("sku", "category", "created_at", "location", "name", "quantity", "status", "updated_at", "warehouse_id") VALUES ('SKU-001', 'Электроника', '2026-05-19 23:12:36.143706', '1/2/3', 'Товар А', 10, 0, '2026-05-19 23:12:36.143706', 980190962), ('SKU-002', 'Одежда', '2026-05-19 23:12:36.143706', '2/1/4', 'Товар Б', 5, 1, '2026-05-19 23:12:36.143706', 980190962);
+INSERT INTO "users" ("id", "created_at", "email", "encrypted_password", "name", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "updated_at") VALUES (980190962, '2026-05-19 23:12:36.157562', DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2026-05-19 23:12:36.157562'), (298486374, '2026-05-19 23:12:36.157562', DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2026-05-19 23:12:36.157562');
+INSERT INTO "warehouse_users" ("id", "active", "created_at", "invitation_token", "role", "updated_at", "user_id", "warehouse_id") VALUES (980190962, TRUE, '2026-05-19 23:12:36.158527', DEFAULT, 0, '2026-05-19 23:12:36.158527', 980190962, 980190962), (298486374, TRUE, '2026-05-19 23:12:36.158527', DEFAULT, 1, '2026-05-19 23:12:36.158527', 298486374, 980190962);
+INSERT INTO "warehouses" ("id", "address", "area", "created_at", "name", "owner_name", "racks_count", "updated_at", "zones_count") VALUES (980190962, 'Москва', 500.0, '2026-05-19 23:12:36.159388', 'Главный склад', 'Иван', 8, '2026-05-19 23:12:36.159388', 4), (298486374, 'Санкт-Петербург', 200.0, '2026-05-19 23:12:36.159388', 'Второй склад', 'Петр', 4, '2026-05-19 23:12:36.159388', 2)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "active_storage_variant_records" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "warehouse_users" ENABLE TRIGGER ALL;ALTER TABLE "active_storage_blobs" ENABLE TRIGGER ALL;ALTER TABLE "active_storage_attachments" ENABLE TRIGGER ALL;ALTER TABLE "warehouses" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.8ms)[0m  [1m[35mdo $$
+  declare r record;
+BEGIN
+FOR r IN (
+  SELECT FORMAT(
+    'UPDATE pg_catalog.pg_constraint SET convalidated=false WHERE conname = ''%1$I'' AND connamespace::regnamespace = ''%2$I''::regnamespace; ALTER TABLE %2$I.%3$I VALIDATE CONSTRAINT %1$I;',
+    constraint_name,
+    table_schema,
+    table_name
+  ) AS constraint_check
+  FROM information_schema.table_constraints WHERE constraint_type = 'FOREIGN KEY'
+)
+  LOOP
+    EXECUTE (r.constraint_check);
+  END LOOP;
+END;
+$$;
+[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------
+HomeControllerTest: test_should_get_index
+-----------------------------------------
+Started GET "/" for 127.0.0.1 at 2026-05-19 23:12:36 +0000
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 2.0ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.7ms | GC: 0.2ms)
+Completed 200 OK in 11ms (Views: 4.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.4ms)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------------
+WarehousesControllerTest: test_should_get_index_when_logged_in
+--------------------------------------------------------------
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/warehouses" for 127.0.0.1 at 2026-05-19 23:12:36 +0000
+Processing by WarehousesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering warehouses/index.html.erb within layouts/application
+  [1m[36mWarehouse Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "warehouses" INNER JOIN "warehouse_users" ON "warehouses"."id" = "warehouse_users"."warehouse_id" WHERE "warehouse_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 980190962], ["LIMIT", 1]]
+  [1m[36mWarehouse Load (0.2ms)[0m  [1m[34mSELECT "warehouses".* FROM "warehouses" INNER JOIN "warehouse_users" ON "warehouses"."id" = "warehouse_users"."warehouse_id" WHERE "warehouse_users"."user_id" = $1[0m  [["user_id", 980190962]]
+  [1m[36mWarehouseUser Load (0.2ms)[0m  [1m[34mSELECT "warehouse_users".* FROM "warehouse_users" WHERE "warehouse_users"."warehouse_id" = $1[0m  [["warehouse_id", 980190962]]
+  [1m[36mWarehouseUser Load (0.2ms)[0m  [1m[34mSELECT "warehouse_users".* FROM "warehouse_users" WHERE "warehouse_users"."warehouse_id" = $1 AND "warehouse_users"."user_id" = $2 LIMIT $3[0m  [["warehouse_id", 980190962], ["user_id", 980190962], ["LIMIT", 1]]
+  Rendered warehouses/index.html.erb within layouts/application (Duration: 6.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.1ms | GC: 0.0ms)
+Completed 200 OK in 10ms (Views: 6.7ms | ActiveRecord: 0.8ms (4 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------------------------------
+WarehouseControllerTest: test_should_redirect_root_when_logged_in
+-----------------------------------------------------------------
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/" for 127.0.0.1 at 2026-05-19 23:12:36 +0000
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 0.5ms | GC: 0.0ms)
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------
+WarehouseTest: test_warehouse_should_require_name
+-------------------------------------------------
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------
+WarehouseTest: test_warehouse_should_be_valid
+---------------------------------------------
+  [1m[36mWarehouse Load (0.2ms)[0m  [1m[34mSELECT "warehouses".* FROM "warehouses" WHERE "warehouses"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------------
+WarehouseTest: test_warehouse_should_require_non-negative_racks_count
+---------------------------------------------------------------------
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------
+WarehouseUserTest: test_warehouse_user_should_have_a_role
+---------------------------------------------------------
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 298486374], ["LIMIT", 1]]
+  [1m[36mWarehouse Load (0.1ms)[0m  [1m[34mSELECT "warehouses".* FROM "warehouses" WHERE "warehouses"."id" = $1 LIMIT $2[0m  [["id", 298486374], ["LIMIT", 1]]
+  [1m[36mWarehouseUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "warehouse_users" WHERE "warehouse_users"."user_id" = $1 AND "warehouse_users"."warehouse_id" = $2 LIMIT $3[0m  [["user_id", 298486374], ["warehouse_id", 298486374], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------------
+WarehouseUserTest: test_warehouse_user_should_be_valid
+------------------------------------------------------
+  [1m[36mWarehouseUser Load (0.2ms)[0m  [1m[34mSELECT "warehouse_users".* FROM "warehouse_users" WHERE "warehouse_users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------------
+ProductTest: test_product_location_should_match_format
+------------------------------------------------------
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."sku" = $1 LIMIT $2[0m  [["sku", "SKU-001"], ["LIMIT", 1]]
+  [1m[36mProduct Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."sku" = $1 AND "products"."sku" != $2 LIMIT $3[0m  [["sku", "SKU-001"], ["sku", "SKU-001"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------
+ProductTest: test_product_quantity_should_not_be_negative
+---------------------------------------------------------
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."sku" = $1 LIMIT $2[0m  [["sku", "SKU-001"], ["LIMIT", 1]]
+  [1m[36mProduct Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."sku" = $1 AND "products"."sku" != $2 LIMIT $3[0m  [["sku", "SKU-001"], ["sku", "SKU-001"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------
+ProductTest: test_product_should_require_sku
+--------------------------------------------
+  [1m[36mWarehouse Load (0.1ms)[0m  [1m[34mSELECT "warehouses".* FROM "warehouses" WHERE "warehouses"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mProduct Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."sku" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------
+ProductTest: test_product_should_be_valid
+-----------------------------------------
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."sku" = $1 LIMIT $2[0m  [["sku", "SKU-001"], ["LIMIT", 1]]
+  [1m[36mProduct Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."sku" = $1 AND "products"."sku" != $2 LIMIT $3[0m  [["sku", "SKU-001"], ["sku", "SKU-001"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
