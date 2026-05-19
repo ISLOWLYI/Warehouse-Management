@@ -2,7 +2,7 @@
   <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
     <h1 class="text-3xl font-bold text-gray-900">Мои склады</h1>
     <% if user_signed_in? %>
-      <%= link_to "+ Создать склад", new_warehouse_path, class: "inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition duration-200" %>
+      <%= link_to "+ Создать склад", new_warehouse_path, class: "inline-block bg-[#2F6B3F] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#1e4d2e] transition duration-200" %>
     <% end %>
   </div>
 
@@ -28,7 +28,7 @@
               <p><span class="font-medium">Зон:</span> <%= warehouse.zones_count %></p>
             </div>
             <div class="flex flex-wrap gap-2">
-              <%= link_to "Просмотр", warehouse_path(warehouse), class: "flex-1 text-center bg-blue-50 text-blue-700 px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-100 transition" %>
+              <%= link_to "Просмотр", warehouse_path(warehouse), class: "flex-1 text-center bg-[#FFD27F]/20 text-[#2F6B3F] px-4 py-2 rounded-md text-sm font-medium hover:bg-[#FFD27F]/30 transition" %>
               <%= link_to "Товары", warehouse_products_path(warehouse), class: "flex-1 text-center bg-gray-50 text-gray-700 px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-100 transition" %>
             </div>
           </div>
@@ -37,15 +37,15 @@
     </div>
   <% else %>
     <div class="bg-white rounded-xl shadow-md p-12 text-center border border-gray-100">
-      <div class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-4">
-        <svg class="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+      <div class="w-16 h-16 bg-[#FFD27F]/20 rounded-full flex items-center justify-center mx-auto mb-4">
+        <svg class="w-8 h-8 text-[#2F6B3F]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
       </div>
       <h2 class="text-xl font-semibold text-gray-900 mb-2">У вас пока нет складов</h2>
       <p class="text-gray-600 mb-6">Создайте свой первый склад, чтобы начать управление запасами.</p>
       <% if user_signed_in? %>
-        <%= link_to "Создать склад", new_warehouse_path, class: "inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition duration-200" %>
+        <%= link_to "Создать склад", new_warehouse_path, class: "inline-block bg-[#2F6B3F] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#1e4d2e] transition duration-200" %>
       <% else %>
-        <%= link_to "Войти", new_user_session_path, class: "inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition duration-200 mr-2" %>
+        <%= link_to "Войти", new_user_session_path, class: "inline-block bg-[#2F6B3F] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#1e4d2e] transition duration-200 mr-2" %>
         <%= link_to "Регистрация", new_user_registration_path, class: "inline-block bg-gray-200 text-gray-800 px-6 py-3 rounded-lg font-medium hover:bg-gray-300 transition duration-200" %>
       <% end %>
     </div>

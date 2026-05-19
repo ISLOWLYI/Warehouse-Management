@@ -5,7 +5,7 @@
       <p class="text-gray-600 text-sm mt-1"><%= @warehouse.name %></p>
     </div>
     <div class="flex flex-wrap gap-2">
-      <%= link_to "+ Добавить товар", new_warehouse_product_path(@warehouse), class: "bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition" %>
+      <%= link_to "+ Добавить товар", new_warehouse_product_path(@warehouse), class: "bg-[#2F6B3F] text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-[#1e4d2e] transition" %>
       <%= link_to "← Назад к складу", warehouse_path(@warehouse), class: "bg-gray-100 text-gray-700 px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-200 transition" %>
     </div>
   </div>
@@ -15,11 +15,11 @@
     <%= form_with url: warehouse_products_path(@warehouse), method: :get, local: true, class: "flex flex-wrap gap-3 items-end" do |f| %>
       <div>
         <%= label_tag :category, "Категория", class: "block text-xs font-medium text-gray-500 mb-1" %>
-        <%= select_tag :category, options_for_select([["Все", ""]] + @warehouse.products.distinct.pluck(:category), params[:category]), class: "border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500" %>
+        <%= select_tag :category, options_for_select([["Все", ""]] + @warehouse.products.distinct.pluck(:category), params[:category]), class: "border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-[#2F6B3F]" %>
       </div>
       <div>
         <%= label_tag :status, "Статус", class: "block text-xs font-medium text-gray-500 mb-1" %>
-        <%= select_tag :status, options_for_select([["Все", ""], ["Активен", "active"], ["Неактивен", "inactive"], ["Архив", "archived"]], params[:status]), class: "border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500" %>
+        <%= select_tag :status, options_for_select([["Все", ""], ["Активен", "active"], ["Неактивен", "inactive"], ["Архив", "archived"]], params[:status]), class: "border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-[#2F6B3F]" %>
       </div>
       <div>
         <%= label_tag :sort, "Сортировка", class: "block text-xs font-medium text-gray-500 mb-1" %>
@@ -30,7 +30,7 @@
           ["Количество ↑", "quantity_asc"],
           ["Количество ↓", "quantity_desc"],
           ["Обновлено (старые)", "updated_at_asc"]
-        ], params[:sort]), class: "border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500" %>
+        ], params[:sort]), class: "border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-[#2F6B3F]" %>
       </div>
       <%= submit_tag "Применить", class: "bg-gray-800 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-900 transition" %>
       <%= link_to "Сбросить", warehouse_products_path(@warehouse), class: "text-gray-500 hover:text-gray-700 text-sm px-2 py-2" %>
@@ -61,7 +61,7 @@
               <td class="px-4 py-3 text-sm text-gray-900 font-semibold"><%= product.quantity %></td>
               <td class="px-4 py-3 text-sm text-gray-600">
                 <% if product.location.present? %>
-                  <%= link_to product.location, map_warehouse_path(@warehouse, zone: product.location.split('/')[0], rack: product.location.split('/')[1], spot: product.location.split('/')[2]), class: "text-blue-600 hover:underline" %>
+                  <%= link_to product.location, map_warehouse_path(@warehouse, zone: product.location.split('/')[0], rack: product.location.split('/')[1], spot: product.location.split('/')[2]), class: "text-[#2F6B3F] hover:underline" %>
                 <% else %>
                   <span class="text-gray-400">—</span>
                 <% end %>
@@ -72,7 +72,7 @@
                 </span>
               </td>
               <td class="px-4 py-3 text-right text-sm font-medium">
-                <%= link_to "Просмотр", warehouse_product_path(@warehouse, product), class: "text-blue-600 hover:text-blue-900 mr-3" %>
+                <%= link_to "Просмотр", warehouse_product_path(@warehouse, product), class: "text-[#2F6B3F] hover:text-[#1e4d2e] mr-3" %>
                 <%= link_to "Изменить", edit_warehouse_product_path(@warehouse, product), class: "text-indigo-600 hover:text-indigo-900 mr-3" %>
                 <%= link_to "Удалить", warehouse_product_path(@warehouse, product), data: { turbo_method: :delete, turbo_confirm: "Удалить товар #{product.name}?" }, class: "text-red-600 hover:text-red-900" %>
               </td>
@@ -83,7 +83,7 @@
     </div>
     <% if @products.empty? %>
       <div class="p-8 text-center text-gray-500">
-        Товары не найдены. <%= link_to "Добавить товар", new_warehouse_product_path(@warehouse), class: "text-blue-600 hover:underline" %>
+        Товары не найдены. <%= link_to "Добавить товар", new_warehouse_product_path(@warehouse), class: "text-[#2F6B3F] hover:underline" %>
       </div>
     <% end %>
   </div>

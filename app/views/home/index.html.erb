@@ -1,17 +1,17 @@
 <div class="bg-white">
   <!-- Hero -->
-  <section class="bg-blue-600 text-white">
+  <section class="bg-gradient-to-b from-[#2F6B3F] to-[#FFD27F] text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
       <div class="text-center">
         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6">
           Warehouse Management
         </h1>
-        <p class="text-xl sm:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto">
+        <p class="text-xl sm:text-2xl text-[#FFF8E7] mb-8 max-w-3xl mx-auto">
           Умная система учета и контроля складских запасов для вашего бизнеса
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <%= link_to "Войти в систему", new_user_session_path, class: "inline-block bg-white text-blue-600 font-bold text-lg px-8 py-4 rounded-lg shadow-lg hover:bg-gray-100 transition duration-200" %>
-          <%= link_to "Узнать больше", about_path, class: "inline-block bg-blue-700 text-white font-bold text-lg px-8 py-4 rounded-lg hover:bg-blue-800 transition duration-200" %>
+          <%= link_to "Войти в систему", new_user_session_path, class: "inline-block bg-[#FFD27F] text-[#2F6B3F] font-bold text-lg px-8 py-4 rounded-lg shadow-lg hover:bg-gray-100 transition duration-200" %>
+          <%= link_to "Узнать больше", about_path, class: "inline-block bg-[#1e4d2e] text-white font-bold text-lg px-8 py-4 rounded-lg hover:bg-[#163d24] transition duration-200" %>
         </div>
       </div>
     </div>
@@ -24,24 +24,24 @@
         <h2 class="text-2xl font-bold text-gray-900 mb-6">Быстрый доступ</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <%= link_to warehouses_path, class: "bg-white rounded-xl shadow-md p-6 border border-gray-100 hover:shadow-lg transition" do %>
-            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mb-3">
-              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+            <div class="w-10 h-10 bg-[#FFD27F]/30 rounded-lg flex items-center justify-center mb-3">
+              <svg class="w-5 h-5 text-[#2F6B3F]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
             </div>
             <h3 class="font-semibold text-gray-900">Мои склады</h3>
             <p class="text-sm text-gray-600 mt-1">Просмотр и управление складами</p>
           <% end %>
 
           <%= link_to new_warehouse_path, class: "bg-white rounded-xl shadow-md p-6 border border-gray-100 hover:shadow-lg transition" do %>
-            <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mb-3">
-              <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+            <div class="w-10 h-10 bg-[#FFD27F]/30 rounded-lg flex items-center justify-center mb-3">
+              <svg class="w-5 h-5 text-[#2F6B3F]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
             </div>
             <h3 class="font-semibold text-gray-900">Создать склад</h3>
             <p class="text-sm text-gray-600 mt-1">Настроить новый склад</p>
           <% end %>
 
           <%= link_to edit_user_registration_path, class: "bg-white rounded-xl shadow-md p-6 border border-gray-100 hover:shadow-lg transition" do %>
-            <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mb-3">
-              <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+            <div class="w-10 h-10 bg-[#FFD27F]/30 rounded-lg flex items-center justify-center mb-3">
+              <svg class="w-5 h-5 text-[#2F6B3F]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
             </div>
             <h3 class="font-semibold text-gray-900">Профиль</h3>
             <p class="text-sm text-gray-600 mt-1">Настройки аккаунта</p>

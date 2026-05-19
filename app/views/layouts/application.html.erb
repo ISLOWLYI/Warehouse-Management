@@ -10,7 +10,7 @@
 <body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
 
   <!-- Navigation -->
-  <nav class="bg-blue-600 text-white">
+  <nav class="bg-[#2F6B3F] text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-16">
         <div class="flex items-center">
@@ -22,23 +22,23 @@
 
         <!-- Desktop menu -->
         <div class="hidden md:flex items-center gap-1">
-          <%= link_to "Главная", root_path, class: "px-3 py-2 rounded-md text-sm font-medium #{current_page?(root_path) ? 'bg-blue-700 text-white' : 'text-blue-100 hover:bg-blue-600 hover:text-white'} transition" %>
-          <%= link_to "О нас", about_path, class: "px-3 py-2 rounded-md text-sm font-medium #{current_page?(about_path) ? 'bg-blue-700 text-white' : 'text-blue-100 hover:bg-blue-600 hover:text-white'} transition" %>
+          <%= link_to "Главная", root_path, class: "px-3 py-2 rounded-md text-sm font-medium #{current_page?(root_path) ? 'bg-[#1e4d2e] text-white' : 'text-[#FFD27F] hover:bg-[#1e4d2e] hover:text-white'} transition" %>
+          <%= link_to "О нас", about_path, class: "px-3 py-2 rounded-md text-sm font-medium #{current_page?(about_path) ? 'bg-[#1e4d2e] text-white' : 'text-[#FFD27F] hover:bg-[#1e4d2e] hover:text-white'} transition" %>
           <% if user_signed_in? %>
-            <%= link_to "Склады", warehouses_path, class: "px-3 py-2 rounded-md text-sm font-medium #{request.path&.start_with?('/warehouses') ? 'bg-blue-700 text-white' : 'text-blue-100 hover:bg-blue-600 hover:text-white'} transition" %>
-            <div class="flex items-center gap-3 ml-4 pl-4 border-l border-blue-500">
-              <span class="text-sm text-blue-100"><%= current_user.name || current_user.email %></span>
-              <%= link_to "Профиль", edit_user_registration_path, class: "text-sm text-blue-100 hover:text-white transition" %>
-              <%= link_to "Выйти", logout_path, class: "text-sm bg-blue-700 hover:bg-blue-800 px-3 py-1.5 rounded-md transition" %>
+            <%= link_to "Склады", warehouses_path, class: "px-3 py-2 rounded-md text-sm font-medium #{request.path&.start_with?('/warehouses') ? 'bg-[#1e4d2e] text-white' : 'text-[#FFD27F] hover:bg-[#1e4d2e] hover:text-white'} transition" %>
+            <div class="flex items-center gap-3 ml-4 pl-4 border-l border-[#1e4d2e]">
+              <span class="text-sm text-[#FFD27F]"><%= current_user.name || current_user.email %></span>
+              <%= link_to "Профиль", edit_user_registration_path, class: "text-sm text-[#FFD27F] hover:text-white transition" %>
+              <%= link_to "Выйти", logout_path, class: "text-sm bg-[#1e4d2e] hover:bg-[#163d24] px-3 py-1.5 rounded-md transition" %>
             </div>
           <% else %>
-            <%= link_to "Войти", new_user_session_path, class: "px-3 py-2 rounded-md text-sm font-medium text-blue-100 hover:bg-blue-600 hover:text-white transition" %>
+            <%= link_to "Войти", new_user_session_path, class: "px-3 py-2 rounded-md text-sm font-medium text-[#FFD27F] hover:bg-[#1e4d2e] hover:text-white transition" %>
           <% end %>
         </div>
 
         <!-- Mobile menu button -->
         <div class="flex items-center md:hidden">
-          <button type="button" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="p-2 rounded-md text-blue-100 hover:bg-blue-600 hover:text-white focus:outline-none">
+          <button type="button" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="p-2 rounded-md text-[#FFD27F] hover:bg-[#1e4d2e] hover:text-white focus:outline-none">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
           </button>
         </div>
@@ -46,16 +46,16 @@
     </div>
 
     <!-- Mobile menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-blue-700">
+    <div id="mobile-menu" class="hidden md:hidden bg-[#1e4d2e]">
       <div class="px-2 pt-2 pb-3 space-y-1">
-        <%= link_to "Главная", root_path, class: "block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-blue-600" %>
-        <%= link_to "О нас", about_path, class: "block px-3 py-2 rounded-md text-base font-medium text-blue-100 hover:bg-blue-600 hover:text-white" %>
+        <%= link_to "Главная", root_path, class: "block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-[#1e4d2e]" %>
+        <%= link_to "О нас", about_path, class: "block px-3 py-2 rounded-md text-base font-medium text-[#FFD27F] hover:bg-[#1e4d2e] hover:text-white" %>
         <% if user_signed_in? %>
-          <%= link_to "Склады", warehouses_path, class: "block px-3 py-2 rounded-md text-base font-medium text-blue-100 hover:bg-blue-600 hover:text-white" %>
-          <%= link_to "Профиль", edit_user_registration_path, class: "block px-3 py-2 rounded-md text-base font-medium text-blue-100 hover:bg-blue-600 hover:text-white" %>
-          <%= link_to "Выйти", logout_path, class: "block px-3 py-2 rounded-md text-base font-medium text-blue-100 hover:bg-blue-600 hover:text-white" %>
+          <%= link_to "Склады", warehouses_path, class: "block px-3 py-2 rounded-md text-base font-medium text-[#FFD27F] hover:bg-[#1e4d2e] hover:text-white" %>
+          <%= link_to "Профиль", edit_user_registration_path, class: "block px-3 py-2 rounded-md text-base font-medium text-[#FFD27F] hover:bg-[#1e4d2e] hover:text-white" %>
+          <%= link_to "Выйти", logout_path, class: "block px-3 py-2 rounded-md text-base font-medium text-[#FFD27F] hover:bg-[#1e4d2e] hover:text-white" %>
         <% else %>
-          <%= link_to "Войти", new_user_session_path, class: "block px-3 py-2 rounded-md text-base font-medium text-blue-100 hover:bg-blue-600 hover:text-white" %>
+          <%= link_to "Войти", new_user_session_path, class: "block px-3 py-2 rounded-md text-base font-medium text-[#FFD27F] hover:bg-[#1e4d2e] hover:text-white" %>
         <% end %>
       </div>
     </div>

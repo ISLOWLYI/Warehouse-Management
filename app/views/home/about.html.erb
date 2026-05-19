@@ -1,19 +1,19 @@
 <div class="bg-white">
   <!-- Hero Section -->
-  <section class="bg-blue-600 text-white">
+  <section class="bg-gradient-to-b from-[#2F6B3F] to-[#FFD27F] text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
       <div class="text-center">
         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6">
           Управление складом<br>проще, чем когда-либо
         </h1>
-        <p class="text-xl sm:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto">
+        <p class="text-xl sm:text-2xl text-[#FFF8E7] mb-8 max-w-3xl mx-auto">
           Автоматизируйте учет товаров, контролируйте остатки и оптимизируйте пространство склада в одной системе.
         </p>
-        <div class="bg-blue-700 inline-block rounded-lg px-6 py-3 mb-10">
-          <span class="font-bold text-yellow-300">Акция:</span> <span class="text-white">Скидка 30% на первый месяц + бесплатная настройка склада</span>
+        <div class="bg-[#1e4d2e] inline-block rounded-lg px-6 py-3 mb-10">
+          <span class="font-bold text-[#FFD27F]">Акция:</span> <span class="text-white">Скидка 30% на первый месяц + бесплатная настройка склада</span>
         </div>
         <div>
-          <%= link_to "Зарегистрировать свой склад", new_warehouse_path, class: "inline-block bg-white text-blue-600 font-bold text-lg px-8 py-4 rounded-lg shadow-lg hover:bg-gray-100 transition duration-200" %>
+          <%= link_to "Зарегистрировать свой склад", new_warehouse_path, class: "inline-block bg-[#FFD27F] text-[#2F6B3F] font-bold text-lg px-8 py-4 rounded-lg shadow-lg hover:bg-gray-100 transition duration-200" %>
         </div>
       </div>
     </div>
@@ -25,15 +25,15 @@
       <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">Почему выбирают нас</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div class="bg-white rounded-xl shadow-md p-8">
-          <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+          <div class="w-12 h-12 bg-[#FFD27F]/30 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-[#2F6B3F]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
           </div>
           <h3 class="text-xl font-semibold text-gray-900 mb-2">Изолированные склады под ключ</h3>
           <p class="text-gray-600">Каждый клиент получает отдельный изолированный экземпляр склада с полным контролем доступа.</p>
         </div>
         <div class="bg-white rounded-xl shadow-md p-8">
-          <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          <div class="w-12 h-12 bg-[#FFD27F]/30 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-[#2F6B3F]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
           </div>
           <h3 class="text-xl font-semibold text-gray-900 mb-2">Настройка за 10 минут</h3>
           <p class="text-gray-600">Интуитивный интерфейс и пошаговый мастер позволяют запустить склад за считанные минуты.</p>
@@ -71,16 +71,16 @@
   </section>
 
   <!-- CTA Section -->
-  <section class="py-16 bg-blue-600">
+  <section class="py-16 bg-[#FFD27F]">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl font-bold text-white mb-4">Готовы оптимизировать свой склад?</h2>
-      <p class="text-blue-100 text-lg mb-8">Начните бесплатно и оцените все возможности системы.</p>
-      <%= link_to "Зарегистрировать свой склад", new_warehouse_path, class: "inline-block bg-white text-blue-600 font-bold text-lg px-8 py-4 rounded-lg shadow-lg hover:bg-gray-100 transition duration-200" %>
+      <h2 class="text-3xl font-bold text-[#2F6B3F] mb-4">Готовы оптимизировать свой склад?</h2>
+      <p class="text-[#2F6B3F]/80 text-lg mb-8">Начните бесплатно и оцените все возможности системы.</p>
+      <%= link_to "Зарегистрировать свой склад", new_warehouse_path, class: "inline-block bg-white text-[#2F6B3F] font-bold text-lg px-8 py-4 rounded-lg shadow-lg hover:bg-gray-100 transition duration-200" %>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-300 py-12">
+  <footer class="bg-[#2F6B3F] text-gray-300 py-12">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>
