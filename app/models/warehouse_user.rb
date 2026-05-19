@@ -7,7 +7,7 @@ class WarehouseUser < ApplicationRecord
   validates :role, presence: true
   validates :user_id, uniqueness: { scope: :warehouse_id, message: "already member of this warehouse" }
 
-  before_create :generate_invitation_token, on: :create
+  before_create :generate_invitation_token
 
   private
 
